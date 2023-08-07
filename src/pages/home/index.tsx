@@ -4,26 +4,29 @@ import Hook from './hook'
 import State from './state'
 import Effect from './effect'
 import Context from './context'
-import { createContext, useState } from 'react'
+import ThemeProvider from './themeContext'
+import Memo from './memo'
 
-const userContext = createContext()
+import Link from './link'
 
 const Home = () => {
-  const [user, setUser] = useState('TestTease')
-
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12} onClick={() => setUser('T')}>
-        {user}
-
-        <Stack spacing={4}>
-          <Context />
-          <Effect />
-          <State />
-          <Hook />
-        </Stack>
-      </Grid>
-    </Grid>
+    <>
+      <ThemeProvider>
+        <Grid container spacing={6}>
+          <Grid item xs={12}>
+            <Stack spacing={4}>
+              <Link />
+              <Memo />
+              <Context />
+              <Effect />
+              <State />
+              <Hook />
+            </Stack>
+          </Grid>
+        </Grid>
+      </ThemeProvider>
+    </>
   )
 }
 
